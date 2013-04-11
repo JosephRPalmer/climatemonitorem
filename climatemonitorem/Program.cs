@@ -23,5 +23,18 @@ namespace climatemonitorem
             //Do one time tasks here
             Debug.Print("Program Started");
         }
+        private Text txtMessage;
+
+        private void SetupWindow(string write)
+        {
+            Font baseFont = Resources.GetFont(Resources.FontResources.NinaB);
+            Window window = display.WPFWindow;
+            Canvas canvas = new Canvas();
+            window.Child = canvas;
+            txtMessage = new Text(baseFont, write);
+            canvas.Children.Add(txtMessage);
+            Canvas.SetTop(txtMessage, 200);
+            Canvas.SetLeft(txtMessage, 90);
+        }
     }
 }

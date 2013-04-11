@@ -17,7 +17,7 @@ namespace climatemonitorem
     {
         // GTM.Module definitions
         Gadgeteer.Modules.GHIElectronics.Ethernet_J11D ethernet_J11D;
-        Gadgeteer.Modules.GHIElectronics.Display_T35 display_T35;
+        Gadgeteer.Modules.GHIElectronics.Display_T35 display;
         Gadgeteer.Modules.Seeed.CellularRadio cellularRadio;
         Gadgeteer.Modules.Seeed.TemperatureHumidity temperatureHumidity;
         Gadgeteer.Modules.GHIElectronics.LightSensor lightSensor;
@@ -45,7 +45,7 @@ namespace climatemonitorem
 		
             lightSensor = new GTM.GHIElectronics.LightSensor(9);
 		
-            display_T35 = new GTM.GHIElectronics.Display_T35(14, 13, 12, 10);
+            display = new GTM.GHIElectronics.Display_T35(14, 13, 12, 10);
 		
             temperatureHumidity = new GTM.Seeed.TemperatureHumidity(11);
 
