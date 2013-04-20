@@ -16,7 +16,7 @@ namespace climatemonitorem
     public partial class Program : Gadgeteer.Program
     {
         // GTM.Module definitions
-        Gadgeteer.Modules.GHIElectronics.Ethernet_J11D ethernet_J11D;
+        Gadgeteer.Modules.GHIElectronics.Ethernet_J11D ethernet;
         Gadgeteer.Modules.GHIElectronics.Display_T35 display;
         Gadgeteer.Modules.Seeed.CellularRadio cellularRadio;
         Gadgeteer.Modules.Seeed.TemperatureHumidity temperatureHumidity;
@@ -41,13 +41,13 @@ namespace climatemonitorem
 		
             cellularRadio = new GTM.Seeed.CellularRadio(4);
 		
-            ethernet_J11D = new GTM.GHIElectronics.Ethernet_J11D(7);
+            ethernet = new GTM.GHIElectronics.Ethernet_J11D(7);
 		
             lightSensor = new GTM.GHIElectronics.LightSensor(9);
 		
-            display = new GTM.GHIElectronics.Display_T35(14, 13, 12, 10);
-		
             temperatureHumidity = new GTM.Seeed.TemperatureHumidity(11);
+		
+            display = new GTM.GHIElectronics.Display_T35(14, 13, 12, Socket.Unused);
 
         }
     }
