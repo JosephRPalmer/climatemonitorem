@@ -38,14 +38,13 @@ namespace climatemonitorem
         
         void ProgramStarted()
         {
-            GT.Timer timer = new GT.Timer(500);
-            //GT.Timer light = new GT.Timer(1000);
+            
+            GT.Timer light = new GT.Timer(1000);
             //GT.Timer check = new GT.Timer(30000);
             //check.Tick += new GT.Timer.TickEventHandler(checkformessages);
-            //light.Tick += new GT.Timer.TickEventHandler(measurelight);
-            timer.Tick += new GT.Timer.TickEventHandler(runled);
-            timer.Start();
-            //light.Start();
+            light.Tick += new GT.Timer.TickEventHandler(measurelight);
+            
+            light.Start();
             //check.Start();
                         temperatureHumidity.MeasurementComplete += new TemperatureHumidity.MeasurementCompleteEventHandler(temperatureHumidity_MeasurementComplete);
             Debug.Print("Program Started");
@@ -135,14 +134,14 @@ namespace climatemonitorem
         
         void view_WebEventReceived(string path, WebServer.HttpMethod method, Responder responder)
         {
-            led.TurnGreen();
-            Thread.Sleep(1000);
+            led.TurnWhite();
+            Thread.Sleep(2000);
             led.TurnOff();
 
             Debug.Print("View page requested");
             TimeSpan time = GetMachineTime;
             new DateTime(time.Ticks).ToString("HH:mm:ss");
-           string content = "<html><title>Web Access</title><center><h1>Room Climate Monitor Web Access</center></h1><body></br></br></br>This is the web page for the Room Climate Control Monitor on IP" + systemip  + ".</br></br>Currently the following values are detected: </br></br>Temperature: " + temperature.ToString() + "'c</br></br>Humidity: " + relativeHumidity + "</br></br>Percentage Light(Higher is Lighter): "+ lightpercentage + "%</br></br>Values change every few seconds but require the page to be refreshed for them to be updated.</br></br>Time: " + DateTime.Now + " </br></br>IP: " + systemip + "</br></br></br></br><center>Hosted on the .Net Gadgeteer Platform</center></body></html>" ;
+           string content = "<html><title>Web Access</title><center><h1>Room Climate Monitor Web Access</center></h1><body></br></br></br>This is the web page for the Room Climate Control Monitor on IP" + systemip  + ".</br></br>Currently the following values are detected: </br></br>Temperature: " + temperature.ToString() + "'c</br></br>Humidity: " + relativeHumidity + "</br></br>Percentage Light(Higher is Lighter): "+ lightpercentage + "%</br></br>Values change every few seconds but require the page to be refreshed for them to be updated.</br></br>Time: " + DateTime.Now + " </br></br></br>IP: " + systemip + "</br>Subnet Mask: " + ethernet.Interface.NetworkInterface.SubnetMask + "</br>Gateway: " + ethernet.Interface.NetworkInterface.GatewayAddress + "</br></br></br></br><center>Hosted on the .Net Gadgeteer Platform</center></body></html>" ;
             byte[] bytes = new System.Text.UTF8Encoding().GetBytes(content);
             responder.Respond(bytes, "text/html");
         }
