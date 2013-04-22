@@ -20,8 +20,9 @@ namespace climatemonitorem
         Gadgeteer.Modules.GHIElectronics.Display_T35 display;
         Gadgeteer.Modules.Seeed.CellularRadio cellularRadio;
         Gadgeteer.Modules.Seeed.TemperatureHumidity temperatureHumidity;
-        Gadgeteer.Modules.GHIElectronics.LightSensor lightSensor;
+        Gadgeteer.Modules.GHIElectronics.LightSensor lightsense;
         Gadgeteer.Modules.GHIElectronics.UsbClientDP usbClientDP;
+        Gadgeteer.Modules.GHIElectronics.MulticolorLed led;
 
         public static void Main()
         {
@@ -43,7 +44,9 @@ namespace climatemonitorem
 		
             ethernet = new GTM.GHIElectronics.Ethernet_J11D(7);
 		
-            lightSensor = new GTM.GHIElectronics.LightSensor(9);
+            led = new GTM.GHIElectronics.MulticolorLed(8);
+		
+            lightsense = new GTM.GHIElectronics.LightSensor(9);
 		
             temperatureHumidity = new GTM.Seeed.TemperatureHumidity(11);
 		
