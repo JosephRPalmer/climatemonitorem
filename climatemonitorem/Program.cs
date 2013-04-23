@@ -49,6 +49,7 @@ namespace climatemonitorem
                         temperatureHumidity.MeasurementComplete += new TemperatureHumidity.MeasurementCompleteEventHandler(temperatureHumidity_MeasurementComplete);
             Debug.Print("Program Started");
             temperatureHumidity.StartContinuousMeasurements();
+            ///ethernet.UseStaticIP("192.168.14.254", "255.255.240.0", "192.168.0.66");
             ethernet.UseDHCP();
             led.TurnOff();
             ethernet.NetworkUp +=
@@ -172,7 +173,7 @@ namespace climatemonitorem
         void measurelight(GT.Timer light)
         {
             lightpercentage =  lightsense.ReadLightSensorPercentage();
-            Debug.Print("Success");
+            ///Debug.Print("Success");
         }
         //void checkformessages(GT.Timer check)
         //{
